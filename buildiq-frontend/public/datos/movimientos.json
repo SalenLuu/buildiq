@@ -1,0 +1,46 @@
+[
+  {
+    "idMovimiento": 1,
+    "idObra": 1,
+    "idMaterial": 1,
+    "idProveedor": 2,
+    "tipo": "ENTRADA",
+    "cantidad": 150,
+    "fecha": "2026-11-05T23:03:52",
+    "responsable": "Almacenista Juan",
+    "observacion": "Compra inicial de cemento"
+  },
+  {
+    "idMovimiento": 2,
+    "idObra": 1,
+    "idMaterial": 1,
+    "idProveedor": null,
+    "tipo": "SALIDA",
+    "cantidad": 30,
+    "fecha": "2026-11-05T23:03:52",
+    "responsable": "Maestro Pedro",
+    "observacion": "Fundición de placa piso 2"
+  },
+  {
+    "idMovimiento": 3,
+    "idObra": 1,
+    "idMaterial": 2,
+    "idProveedor": 3,
+    "tipo": "ENTRADA",
+    "cantidad": 300,
+    "fecha": "2026-11-05T23:03:52",
+    "responsable": "Almacenista Juan",
+    "observacion": "Varilla para columnas"
+  },
+  {
+    "idMovimiento": 4,
+    "idObra": 2,
+    "idMaterial": 4,
+    "idProveedor": 1,
+    "tipo": "ENTRADA",
+    "cantidad": 2000,
+    "fecha": "2026-11-05T23:03:52",
+    "responsable": "Almacenista Ana",
+    "observacion": "Ladrillo para muros"
+  }
+]

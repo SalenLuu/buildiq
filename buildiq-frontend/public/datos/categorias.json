@@ -1,0 +1,32 @@
+[
+  {
+    "idCategoria": 1,
+    "nombre": "Cementantes",
+    "descripcion": "Cemento, mortero, pegantes"
+  },
+  {
+    "idCategoria": 2,
+    "nombre": "Acero",
+    "descripcion": "Varillas, mallas, alambre"
+  },
+  {
+    "idCategoria": 3,
+    "nombre": "Agregados",
+    "descripcion": "Arena, gravilla, recebo"
+  },
+  {
+    "idCategoria": 4,
+    "nombre": "Mampostería",
+    "descripcion": "Ladrillos, bloques"
+  },
+  {
+    "idCategoria": 5,
+    "nombre": "Herramientas",
+    "descripcion": "Herramienta menor de obra"
+  },
+  {
+    "idCategoria": 6,
+    "nombre": "Eléctrico",
+    "descripcion": "Cables, tubería y accesorios eléctricos"
+  }
+]
