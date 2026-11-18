@@ -1,0 +1,5 @@
+1. Correr Base de datos: MySQL ya corre como servicio. systemctl is-active mysqld (hoy dice active). Si no, sudo systemctl start mysqld
+
+2. Correr back: ./run-backend.sh
+
+3. Correr front: Desde Proyecto final/: ./run-frontend.sh
