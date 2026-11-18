@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+/*
+ * Tema BuildIQ: ámbar (casco de obra) + gris pizarra.
+ * Se define aquí para usar clases como bg-brand-500 o text-pizarra-800
+ * en todo el proyecto, sin repetir códigos de color.
+ */
+@theme {
+  --color-brand-50: #fffbeb;
+  --color-brand-100: #fef3c7;
+  --color-brand-200: #fde68a;
+  --color-brand-300: #fcd34d;
+  --color-brand-400: #fbbf24;
+  --color-brand-500: #f59e0b;
+  --color-brand-600: #d97706;
+  --color-brand-700: #b45309;
+  --color-brand-800: #92400e;
+  --color-brand-900: #78350f;
+
+  --color-pizarra-50: #f6f7f9;
+  --color-pizarra-100: #eceef2;
+  --color-pizarra-200: #d5d9e2;
+  --color-pizarra-300: #b1b9c9;
+  --color-pizarra-400: #8793ab;
+  --color-pizarra-500: #687590;
+  --color-pizarra-600: #535e77;
+  --color-pizarra-700: #444d61;
+  --color-pizarra-800: #3b4252;
+  --color-pizarra-900: #2e3440;
+  --color-pizarra-950: #1f232c;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* CSS propio: solo lo que Tailwind no cubre (fondo base y foco accesible). */
+body {
+  background-color: var(--color-pizarra-50);
+  color: var(--color-pizarra-800);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+/*
+ * Estilo común de inputs, selects y textareas de los formularios.
+ * Se hace con @apply para no repetir esta cadena larga de clases en cada campo.
+ */
+@layer components {
+  .app-input {
+    @apply w-full rounded-lg border border-pizarra-300 bg-white px-3 py-2 text-sm text-pizarra-900
+      placeholder:text-pizarra-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none
+      disabled:bg-pizarra-100;
+  }
+  .app-input.ng-invalid.ng-touched {
+    @apply border-red-500;
+  }
+}

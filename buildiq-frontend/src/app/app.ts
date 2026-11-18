@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Layout } from './shared/layout/layout';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  imports: [Layout],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<app-layout />',
 })
-export class App {
-  protected readonly title = signal('buildiq-frontend');
-}
+export class App {}
