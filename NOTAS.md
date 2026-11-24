@@ -80,8 +80,6 @@ Los errores llegan al front como `{ "message": "..." }` (ver `ManejoErrores`).
 | Informes en PDF | ⏳ solo la pantalla de filtros, el botón está desactivado |
 | Despliegue | ⏳ no empezado |
 
-Las pruebas automáticas se quitaron porque el tema no se ha visto en clase.
-
 ---
 
 ## 4. Decisiones
