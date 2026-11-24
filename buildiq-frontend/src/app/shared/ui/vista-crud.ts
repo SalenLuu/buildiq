@@ -6,13 +6,8 @@ import { EncabezadoPagina } from './encabezado-pagina';
 import { Modal } from './modal';
 import { Columna, Tabla } from './tabla';
 
-/**
- * Pantalla CRUD completa: encabezado, buscador, tabla, ventana del formulario y
- * confirmación de borrado. Cada página solo aporta las columnas y los campos del
- * formulario (que se proyectan con <ng-content> dentro del modal).
- *
- * El botón "Guardar" está fuera del <form> proyectado y lo envía con form="form-crud".
- */
+// Pantalla CRUD: buscador, tabla, formulario en ventana y confirmación de borrado.
+// Cada página pone sus columnas y los campos del formulario.
 @Component({
   selector: 'app-vista-crud',
   imports: [EncabezadoPagina, Boton, Aviso, Tabla, Modal, Confirmar],
@@ -87,7 +82,7 @@ export class VistaCrud {
   readonly tituloModal = input('');
   readonly guardando = input(false);
   readonly errorModal = input<string | null>(null);
-  /** Texto del diálogo de borrado; null = cerrado. */
+  // null = diálogo cerrado.
   readonly mensajeBorrar = input<string | null>(null);
 
   readonly busqueda = model('');

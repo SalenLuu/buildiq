@@ -8,10 +8,7 @@ import { CampoFormulario } from '../../shared/ui/campo-formulario';
 import { EncabezadoPagina } from '../../shared/ui/encabezado-pagina';
 import { Tarjeta } from '../../shared/ui/tarjeta';
 
-/**
- * Pantalla de filtros para los informes. El PDF lo generará el backend en la fase
- * del 20 de noviembre;
- */
+// Filtros de los informes. El PDF todavía no está hecho.
 @Component({
   selector: 'app-informes',
   imports: [ReactiveFormsModule, EncabezadoPagina, Tarjeta, CampoFormulario, Boton, Aviso],

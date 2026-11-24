@@ -22,7 +22,7 @@ const TONO_ESTADO: Record<EstadoObra, ToneInsignia> = {
   FINALIZADA: 'neutro',
 };
 
-/** Regla del script SQL: fecha_fin IS NULL OR fecha_fin >= fecha_inicio. */
+// La fecha de fin no puede ser anterior a la de inicio.
 const fechaFinPosterior: ValidatorFn = (control) => {
   const inicio = control.parent?.get('fechaInicio')?.value as string | undefined;
   const fin = control.value as string;

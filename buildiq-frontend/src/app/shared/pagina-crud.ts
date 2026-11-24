@@ -4,22 +4,17 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CrudService } from '../core/services/crud.service';
 
-/**
- * Lógica común de las pantallas CRUD (listar, buscar, crear, editar, borrar).
- * Cada página hija indica su servicio, su formulario y cómo identificar/buscar
- * una fila; el resto se hereda. Así Materiales, Categorías, Proveedores y Obras
- * no repiten el mismo código.
- */
+// Lógica común de las pantallas CRUD: listar, buscar, crear, editar y borrar.
 @Directive()
 export abstract class PaginaCrud<T extends object> implements OnInit {
   protected abstract readonly servicio: CrudService<T>;
   protected abstract readonly form: FormGroup;
-  protected abstract readonly nombreSingular: string; // "material", "obra"...
+  protected abstract readonly nombreSingular: string;
   protected abstract idDe(fila: T): number;
   protected abstract textoBusqueda(fila: T): string;
-  /** Valores iniciales del formulario al crear un registro nuevo. */
+  // Valores iniciales del formulario.
   protected abstract valorVacio(): Record<string, unknown>;
-  /** Texto que se muestra en el diálogo de borrado. */
+  // Texto para el mensaje de borrado.
   protected abstract descripcion(fila: T): string;
 
   protected readonly filas = signal<T[]>([]);
@@ -88,7 +83,7 @@ export abstract class PaginaCrud<T extends object> implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
-    // Los campos opcionales vacíos viajan como null (así lo espera la base de datos).
+    // Los campos vacíos se envían como null.
     const crudo = this.form.getRawValue() as Record<string, unknown>;
     const dato = Object.fromEntries(
       Object.entries(crudo).map(([k, v]) => [k, typeof v === 'string' && v.trim() === '' ? null : v]),
@@ -135,7 +130,7 @@ export abstract class PaginaCrud<T extends object> implements OnInit {
 
   protected mensajeDe(e: unknown, porDefecto: string): string {
     if (e instanceof HttpErrorResponse) {
-      if (e.status === 0) return 'No hay conexión con el servidor. ¿Está encendido el backend?';
+      if (e.status === 0) return 'Error de conexión con el servidor.';
       return e.error?.message ?? porDefecto;
     }
     return porDefecto;

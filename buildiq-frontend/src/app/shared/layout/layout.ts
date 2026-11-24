@@ -7,10 +7,7 @@ interface ItemMenu {
   icono: string;
 }
 
-/**
- * Estructura común de la app: menú lateral en pantallas grandes y barra superior con
- * botón de menú en móviles. Las páginas se pintan dentro de <router-outlet>.
- */
+// Estructura general: menú lateral y zona donde se muestran las páginas.
 @Component({
   selector: 'app-layout',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],

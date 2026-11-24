@@ -1,9 +1,4 @@
-/*
- * Modelos del dominio. Los nombres de campo coinciden con el JSON que devolverá
- * el backend (camelCase), derivados de las columnas de inventario_obra.sql.
- * Los campos "xxxNombre" son datos de lectura que el backend resuelve con joins,
- * para que la tabla no tenga que consultar otra entidad por cada fila.
- */
+// Modelos de datos. Coinciden con el JSON que devuelve el backend.
 
 export type EstadoObra = 'PLANEADA' | 'EN_EJECUCION' | 'PAUSADA' | 'FINALIZADA';
 export type TipoMovimiento = 'ENTRADA' | 'SALIDA' | 'AJUSTE';
@@ -46,7 +41,7 @@ export interface Material {
   activo: boolean;
 }
 
-/** Una fila de stock_obra (PK compuesta idObra + idMaterial) con datos del material. */
+// Una fila de stock_obra con datos del material.
 export interface StockObra {
   idObra: number;
   idMaterial: number;
@@ -76,7 +71,7 @@ export interface Movimiento {
   observacion: string | null;
 }
 
-/** Cuerpo para registrar un movimiento (el backend pone id y fecha). */
+// Datos para registrar un movimiento (el backend pone el id y la fecha).
 export type MovimientoNuevo = Pick<
   Movimiento,
   'idObra' | 'idMaterial' | 'idProveedor' | 'tipo' | 'cantidad' | 'responsable' | 'observacion'
@@ -95,7 +90,7 @@ export interface FiltroStock {
   idCategoria?: number | null;
 }
 
-/** Cuerpo de error que devuelve la API (el frontend de prueba la imita). */
+// Error que devuelve la API.
 export interface ErrorApi {
   message: string;
 }

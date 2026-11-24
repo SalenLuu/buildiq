@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
-/**
- * Ventana modal simple (sin librerías). Se muestra con [abierto]="true" y avisa
- * con (cerrar) cuando la persona pulsa Esc, el fondo o la X.
- */
+// Ventana modal. Se cierra con Esc, clic en el fondo o la X.
 @Component({
   selector: 'app-modal',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -13,11 +13,7 @@ const VARIANTES: Record<VarianteBoton, string> = {
   fantasma: 'text-pizarra-600 hover:bg-pizarra-100',
 };
 
-/**
- * Botón reutilizable. Se usa sobre el <button> nativo (selector de atributo) para
- * conservar la semántica y el foco del teclado:
- *   <button appBoton variante="peligro" (click)="borrar()">Borrar</button>
- */
+// Botón reutilizable. Uso: <button appBoton variante="peligro">Borrar</button>
 @Component({
   selector: 'button[appBoton], a[appBoton]',
   template: '<ng-content />',

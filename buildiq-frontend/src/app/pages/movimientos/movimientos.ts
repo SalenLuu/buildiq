@@ -17,10 +17,7 @@ import { EncabezadoPagina } from '../../shared/ui/encabezado-pagina';
 import { Columna, Tabla } from '../../shared/ui/tabla';
 import { Tarjeta } from '../../shared/ui/tarjeta';
 
-/**
- * Registro de entradas y salidas + historial con filtros.
- * Regla de negocio: una SALIDA no puede superar el stock disponible en esa obra.
- */
+// Registro de entradas y salidas, e historial con filtros.
 @Component({
   selector: 'app-movimientos',
   imports: [ReactiveFormsModule, EncabezadoPagina, Tarjeta, CampoFormulario, Boton, Aviso, Tabla],
@@ -180,7 +177,7 @@ export class MovimientosPage implements OnInit {
     hasta: new FormControl(''),
   });
 
-  // Valores del formulario como señal, para recalcular "disponible" al instante.
+  // Valores del formulario como señal para recalcular el disponible.
   private readonly valor = toSignal(this.form.valueChanges, { initialValue: this.form.getRawValue() });
 
   protected readonly esEntrada = computed(() => this.valor().tipo === 'ENTRADA');
@@ -213,7 +210,7 @@ export class MovimientosPage implements OnInit {
   ];
 
   constructor() {
-    // Si cambia el tipo, la obra o el material, la regla del stock hay que revalidarla.
+    // Al cambiar tipo, obra o material se vuelve a validar la cantidad.
     this.form.valueChanges.subscribe(() => this.form.controls.cantidad.updateValueAndValidity({ emitEvent: false }));
     // Cada cambio de filtro vuelve a pedir el historial.
     this.filtros.valueChanges.subscribe(() => this.cargarHistorial());
@@ -227,7 +224,7 @@ export class MovimientosPage implements OnInit {
     this.cargarHistorial();
   }
 
-  /** La salida no puede superar el stock disponible (regla del enunciado). */
+  // Una salida no puede superar el stock disponible.
   private validarStock(control: AbstractControl): ValidationErrors | null {
     const form = control.parent;
     if (!form || form.get('tipo')?.value !== 'SALIDA') return null;
@@ -265,7 +262,7 @@ export class MovimientosPage implements OnInit {
         next: () => {
           this.registrando.set(false);
           this.exito.set(v.tipo === 'ENTRADA' ? 'Entrada registrada correctamente.' : 'Salida registrada correctamente.');
-          // Se conservan obra, tipo y responsable para registrar varios movimientos seguidos.
+          // Se dejan obra, tipo y responsable para registrar otro seguido.
           this.form.patchValue({ idMaterial: null, idProveedor: null, cantidad: null, observacion: '' });
           this.form.markAsUntouched();
           this.cargarStock();
@@ -276,7 +273,7 @@ export class MovimientosPage implements OnInit {
           this.errorRegistro.set(
             e instanceof HttpErrorResponse && e.status !== 0
               ? (e.error?.message ?? 'No se pudo registrar el movimiento.')
-              : 'No hay conexión con el servidor. ¿Está encendido el backend?',
+              : 'Error de conexión con el servidor.',
           );
         },
       });

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-/** Contenedor blanco con borde y sombra suave; el contenido se proyecta dentro. */
+// Contenedor con borde y sombra.
 @Component({
   selector: 'app-tarjeta',
   changeDetection: ChangeDetectionStrategy.OnPush,

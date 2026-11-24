@@ -6,20 +6,17 @@ import { Insignia, ToneInsignia } from './insignia';
 export type TipoColumna = 'texto' | 'numero' | 'moneda' | 'fecha' | 'fechaHora' | 'booleano' | 'insignia';
 
 export interface Columna {
-  /** Nombre del campo en el objeto de la fila. */
+  // Nombre del campo en la fila.
   clave: string;
   etiqueta: string;
   tipo?: TipoColumna;
-  /** Para tipo 'insignia': decide el color según el valor. */
+  // Solo para 'insignia': color según el valor.
   tono?: (valor: unknown) => ToneInsignia;
-  /** Para tipo 'insignia': traduce el valor a texto legible. */
+  // Solo para 'insignia': texto a mostrar.
   texto?: (valor: unknown) => string;
 }
 
-/**
- * Tabla genérica: recibe columnas y filas y emite eventos de editar/eliminar.
- * Así las 4 pantallas CRUD comparten el mismo marcado en vez de repetir clases.
- */
+// Tabla reutilizable: recibe columnas y filas, y avisa al editar o borrar.
 @Component({
   selector: 'app-tabla',
   imports: [DatePipe, DecimalPipe, CurrencyPipe, Insignia, Boton],
@@ -102,7 +99,7 @@ export class Tabla {
   readonly filas = input.required<any[]>();
   readonly acciones = input(false);
   readonly vacio = input('No hay registros para mostrar.');
-  /** Permite resaltar filas (por ejemplo, stock bajo el mínimo). */
+  // Clase extra por fila (por ejemplo, stock bajo).
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   readonly claseFila = input<(fila: any) => string>(() => '');
 

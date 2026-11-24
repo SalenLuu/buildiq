@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 import { Boton } from './boton';
 import { Modal } from './modal';
 
-/** Diálogo de confirmación para acciones destructivas (borrar). */
+// Diálogo para confirmar un borrado.
 @Component({
   selector: 'app-confirmar',
   imports: [Modal, Boton],

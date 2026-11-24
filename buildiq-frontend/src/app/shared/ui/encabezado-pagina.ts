@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-/** Título de cada pantalla con una zona a la derecha para acciones (botón "Nuevo"). */
+// Título de la pantalla con espacio para botones.
 @Component({
   selector: 'app-encabezado-pagina',
   changeDetection: ChangeDetectionStrategy.OnPush,

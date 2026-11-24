@@ -10,7 +10,7 @@ const TONOS: Record<ToneInsignia, string> = {
   info: 'bg-sky-100 text-sky-800',
 };
 
-/** Etiqueta pequeña de color (estado de obra, tipo de movimiento, activo/inactivo). */
+// Etiqueta pequeña de color.
 @Component({
   selector: 'app-insignia',
   changeDetection: ChangeDetectionStrategy.OnPush,

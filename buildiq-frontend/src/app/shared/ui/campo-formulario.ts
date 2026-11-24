@@ -1,13 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, input, signal } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
-/**
- * Etiqueta + control + mensaje de error. Centraliza el aspecto de los campos y el
- * texto de las validaciones para no repetirlo en cada formulario.
- *   <app-campo etiqueta="Nombre" [control]="form.controls.nombre">
- *     <input class="app-input" formControlName="nombre" />
- *   </app-campo>
- */
+// Campo de formulario: etiqueta, control y mensaje de error.
 @Component({
   selector: 'app-campo',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,9 +25,7 @@ export class CampoFormulario {
   readonly control = input<AbstractControl | null>(null);
   readonly obligatorio = input(false);
 
-  // El estado del control (touched, invalid) es mutable y este componente es OnPush:
-  // sin esto, los mensajes de error no se repintan al enviar el formulario vacío.
-  // Cada evento del control sube este contador, que mensajeError() lee.
+  // Cambia con cada evento del control para que los errores se vuelvan a pintar.
   private readonly cambios = signal(0);
 
   constructor() {

@@ -13,7 +13,7 @@ import { EncabezadoPagina } from '../../shared/ui/encabezado-pagina';
 import { Tabla, Columna } from '../../shared/ui/tabla';
 import { Tarjeta } from '../../shared/ui/tarjeta';
 
-/** Resumen general: contadores, alertas de stock bajo y últimos movimientos. */
+// Resumen: contadores, alertas de stock bajo y últimos movimientos.
 @Component({
   selector: 'app-inicio',
   imports: [RouterLink, EncabezadoPagina, Tarjeta, Tabla, Aviso],
@@ -86,7 +86,7 @@ export class InicioPage implements OnInit {
   protected readonly error = signal<string | null>(null);
 
   protected readonly obrasActivas = computed(() => this.obras().filter((o) => o.estado === 'EN_EJECUCION').length);
-  // Alerta: la cantidad en una obra está por debajo del stock mínimo del material.
+  // Materiales por debajo del stock mínimo en alguna obra.
   protected readonly alertas = computed(() => this.stock().filter((s) => s.cantidad < s.stockMinimo));
   protected readonly ultimos = computed(() => this.movimientos().slice(0, 5));
 
@@ -118,7 +118,7 @@ export class InicioPage implements OnInit {
         this.stock.set(r.stock);
         this.movimientos.set(r.movimientos);
       },
-      error: () => this.error.set('No se pudo cargar el resumen. ¿Está encendido el backend?'),
+      error: () => this.error.set('Error de conexión con el servidor.'),
     });
   }
 }

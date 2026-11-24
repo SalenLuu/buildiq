@@ -7,7 +7,7 @@ const ESTILOS = {
   alerta: 'border-brand-200 bg-brand-50 text-brand-800',
 } as const;
 
-/** Mensaje en línea para errores de la API, confirmaciones y avisos. */
+// Mensaje de error, éxito o alerta.
 @Component({
   selector: 'app-aviso',
   changeDetection: ChangeDetectionStrategy.OnPush,

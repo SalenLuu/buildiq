@@ -5,7 +5,7 @@ import { Aviso } from '../../shared/ui/aviso';
 import { EncabezadoPagina } from '../../shared/ui/encabezado-pagina';
 import { Columna, Tabla } from '../../shared/ui/tabla';
 
-/** Stock actual por obra. Las filas bajo el mínimo se resaltan en ámbar. */
+// Stock por obra. Las filas bajo el mínimo se resaltan.
 @Component({
   selector: 'app-stock',
   imports: [EncabezadoPagina, Tabla, Aviso],
@@ -87,7 +87,7 @@ export class StockPage implements OnInit {
     { clave: 'stockMinimo', etiqueta: 'Mínimo', tipo: 'numero' },
   ];
 
-  /** Fila bajo el mínimo = fondo ámbar y texto en negrita. */
+  // Resalta las filas bajo el mínimo.
   protected readonly resaltar = (f: StockObra): string =>
     f.cantidad < f.stockMinimo ? 'bg-brand-50 font-semibold' : '';
 
@@ -113,7 +113,7 @@ export class StockPage implements OnInit {
         this.filas.set(datos);
         this.error.set(null);
       },
-      error: () => this.error.set('No se pudo cargar el stock. ¿Está encendido el backend?'),
+      error: () => this.error.set('Error de conexión con el servidor.'),
     });
   }
 }
