@@ -5,11 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/**
- * CORS: el navegador bloquea que la página de http://localhost:4200 (Angular) llame a
- * http://localhost:8080 (esta API) porque son orígenes distintos. Aquí autorizamos
- * explícitamente solo a Angular, y solo para las rutas /api.
- */
+// Permite que Angular (localhost:4200) llame a esta API (localhost:8080).
 @Configuration
 public class CorsConfig {
 

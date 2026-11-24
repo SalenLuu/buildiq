@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
-/** Tabla obras. */
+// Tabla obras.
 @Entity
 @Table(name = "obras")
 public class Obra {
@@ -36,7 +36,7 @@ public class Obra {
     @Column(name = "fecha_inicio", nullable = false)
     private LocalDate fechaInicio;
 
-    // Opcional; la base exige fecha_fin >= fecha_inicio (se valida en la Fase 3).
+    // Opcional. No puede ser anterior a la fecha de inicio.
     @Column(name = "fecha_fin")
     private LocalDate fechaFin;
 

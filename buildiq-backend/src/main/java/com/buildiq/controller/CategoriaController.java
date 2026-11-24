@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-/** Controlador REST: recibe la petición HTTP, delega en el servicio y devuelve JSON. */
 @RestController
 @RequestMapping("/api/categorias")
 public class CategoriaController {
@@ -38,7 +37,7 @@ public class CategoriaController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoría no encontrada."));
     }
 
-    // @Valid hace que Spring compruebe las anotaciones de la entidad (@NotBlank, @Size) antes de entrar.
+    // @Valid revisa las validaciones de la clase (@NotBlank, @Size...) antes de entrar.
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Categoria crear(@Valid @RequestBody Categoria categoria) {

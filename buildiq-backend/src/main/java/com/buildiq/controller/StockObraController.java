@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Stock por obra. Es solo lectura: el stock cambia únicamente al registrar movimientos,
- * por eso no hay POST/PUT/DELETE aquí.
- */
+// Solo lectura: el stock cambia únicamente al registrar movimientos.
 @RestController
 @RequestMapping("/api/stock")
 public class StockObraController {

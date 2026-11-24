@@ -20,10 +20,8 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Tabla movimientos: historial de entradas, salidas y ajustes.
- * El proveedor solo aplica a ENTRADA, por eso la relación admite null.
- */
+// Tabla movimientos: entradas, salidas y ajustes.
+// El proveedor solo se usa en las entradas, por eso puede ser null.
 @Entity
 @Table(name = "movimientos")
 public class Movimiento {
@@ -60,7 +58,7 @@ public class Movimiento {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal cantidad;
 
-    // La base la rellena con CURRENT_TIMESTAMP; al crear desde la API la fija el servicio.
+    // La pone el servicio al registrar el movimiento.
     @Column(nullable = false)
     private LocalDateTime fecha;
 

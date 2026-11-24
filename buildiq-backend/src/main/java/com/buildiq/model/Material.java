@@ -17,11 +17,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
-/**
- * Tabla materiales.
- * El JSON que ve el frontend es plano: en vez de anidar la categoría, expone
- * idCategoria y categoriaNombre (lo que espera el modelo TypeScript Material).
- */
+// Tabla materiales. En el JSON la categoría va como idCategoria y categoriaNombre.
 @Entity
 @Table(name = "materiales")
 public class Material {
@@ -71,6 +67,18 @@ public class Material {
 
     @JsonProperty("idCategoria")
     public Integer getIdCategoria() { return categoria == null ? null : categoria.getIdCategoria(); }
+
+    // El frontend manda solo el id; el servicio luego busca la categoría completa.
+    @JsonProperty("idCategoria")
+    public void setIdCategoria(Integer idCategoria) {
+        if (idCategoria == null) {
+            this.categoria = null;
+        } else {
+            Categoria soloId = new Categoria();
+            soloId.setIdCategoria(idCategoria);
+            this.categoria = soloId;
+        }
+    }
 
     @JsonProperty("categoriaNombre")
     public String getCategoriaNombre() { return categoria == null ? null : categoria.getNombre(); }

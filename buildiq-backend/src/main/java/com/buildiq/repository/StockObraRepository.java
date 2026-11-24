@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface StockObraRepository extends JpaRepository<StockObra, StockObraId> {
 
-    /** Stock con filtros opcionales: un parámetro null significa "sin filtrar por eso". */
+    // Si un filtro llega en null, no se filtra por ese campo.
     @EntityGraph(attributePaths = {"obra", "material", "material.categoria"})
     @Query("""
             select s from StockObra s
@@ -19,4 +19,8 @@ public interface StockObraRepository extends JpaRepository<StockObra, StockObraI
             order by s.obra.nombre, s.material.nombre
             """)
     List<StockObra> filtrar(@Param("idObra") Integer idObra, @Param("idCategoria") Integer idCategoria);
+
+    boolean existsByObraIdObra(Integer idObra);
+
+    boolean existsByMaterialIdMaterial(Integer idMaterial);
 }

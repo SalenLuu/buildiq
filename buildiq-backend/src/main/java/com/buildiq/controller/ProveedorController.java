@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-/** Controlador REST: recibe la petición HTTP, delega en el servicio y devuelve JSON. */
 @RestController
 @RequestMapping("/api/proveedores")
 public class ProveedorController {
@@ -37,21 +37,20 @@ public class ProveedorController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Proveedor no encontrado."));
     }
 
-    // TODO Fase 3: crear (validar con @Valid, reglas de unicidad, responder 201)
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Proveedor crear(@Valid @RequestBody Proveedor proveedor) {
-        throw Pendiente.fase3();
+        return servicio.crear(proveedor);
     }
 
-    // TODO Fase 3: actualizar
     @PutMapping("/{id}")
     public Proveedor actualizar(@PathVariable Integer id, @Valid @RequestBody Proveedor proveedor) {
-        throw Pendiente.fase3();
+        return servicio.actualizar(id, proveedor);
     }
 
-    // TODO Fase 3: eliminar (responder 409 si hay registros que dependen de este)
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Integer id) {
-        throw Pendiente.fase3();
+        servicio.eliminar(id);
     }
 }

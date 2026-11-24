@@ -16,7 +16,6 @@ public class StockObraService {
         this.repositorio = repositorio;
     }
 
-    /** Stock por obra, con filtros opcionales por obra y categoría. */
     public List<StockObra> consultar(Integer idObra, Integer idCategoria) {
         return repositorio.filtrar(idObra, idCategoria);
     }

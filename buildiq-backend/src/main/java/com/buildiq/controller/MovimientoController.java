@@ -1,16 +1,20 @@
 package com.buildiq.controller;
 
 import com.buildiq.model.Movimiento;
+import com.buildiq.model.MovimientoNuevo;
 import com.buildiq.model.TipoMovimiento;
 import com.buildiq.service.MovimientoService;
+import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,7 +27,7 @@ public class MovimientoController {
         this.servicio = servicio;
     }
 
-    /** Historial con filtros opcionales: ?idObra=&idMaterial=&tipo=&desde=YYYY-MM-DD&hasta=YYYY-MM-DD */
+    // Todos los filtros son opcionales. Ejemplo: /api/movimientos?idObra=1&tipo=SALIDA
     @GetMapping
     public List<Movimiento> consultar(
             @RequestParam(required = false) Integer idObra,
@@ -34,10 +38,9 @@ public class MovimientoController {
         return servicio.consultar(idObra, idMaterial, tipo, desde, hasta);
     }
 
-    // TODO Fase 3: registrar entrada/salida/ajuste. Cuerpo esperado (ver MovimientoNuevo en el frontend):
-    // { idObra, idMaterial, idProveedor, tipo, cantidad, responsable, observacion }
     @PostMapping
-    public Movimiento registrar(@RequestBody Movimiento movimiento) {
-        throw Pendiente.fase3();
+    @ResponseStatus(HttpStatus.CREATED)
+    public Movimiento registrar(@Valid @RequestBody MovimientoNuevo nuevo) {
+        return servicio.registrar(nuevo);
     }
 }

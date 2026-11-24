@@ -9,14 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-/**
- * Traduce errores comunes a { "message": "..." }, el formato que lee el frontend.
- * Aplica a todos los controladores.
- */
+// Convierte los errores en { "message": "..." }, que es lo que muestra el frontend.
 @RestControllerAdvice
 public class ManejoErrores {
 
-    // Falló una validación de @Valid (campo vacío, texto demasiado largo...).
+    // Falló una validación de @Valid.
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> datosInvalidos(MethodArgumentNotValidException e) {
@@ -26,7 +23,7 @@ public class ManejoErrores {
         return Map.of("message", detalle);
     }
 
-    // Red de seguridad: si MySQL rechaza algo (único o llave foránea) que el servicio no detectó antes.
+    // MySQL rechazó la operación (valor repetido o registro en uso).
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public Map<String, String> conflicto(DataIntegrityViolationException e) {

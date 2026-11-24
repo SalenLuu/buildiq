@@ -14,11 +14,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
-/**
- * Tabla stock_obra: cantidad actual de un material en una obra.
- * La PK es compuesta (@EmbeddedId); @MapsId enlaza cada parte de la clave con su relación.
- * El JSON es plano y trae los datos del material para pintar la tabla sin más consultas.
- */
+// Tabla stock_obra: cuánto hay de un material en una obra.
+// La llave es obra + material (@EmbeddedId); @MapsId llena cada parte desde su relación.
 @Entity
 @Table(name = "stock_obra")
 public class StockObra {

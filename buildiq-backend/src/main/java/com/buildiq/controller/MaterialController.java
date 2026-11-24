@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-/** Controlador REST: recibe la petición HTTP, delega en el servicio y devuelve JSON. */
 @RestController
 @RequestMapping("/api/materiales")
 public class MaterialController {
@@ -37,21 +37,20 @@ public class MaterialController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Material no encontrado."));
     }
 
-    // TODO Fase 3: crear (validar con @Valid, reglas de unicidad, responder 201)
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Material crear(@Valid @RequestBody Material material) {
-        throw Pendiente.fase3();
+        return servicio.crear(material);
     }
 
-    // TODO Fase 3: actualizar
     @PutMapping("/{id}")
     public Material actualizar(@PathVariable Integer id, @Valid @RequestBody Material material) {
-        throw Pendiente.fase3();
+        return servicio.actualizar(id, material);
     }
 
-    // TODO Fase 3: eliminar (responder 409 si hay registros que dependen de este)
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Integer id) {
-        throw Pendiente.fase3();
+        servicio.eliminar(id);
     }
 }

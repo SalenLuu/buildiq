@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MaterialRepository extends JpaRepository<Material, Integer> {
 
-    // La categoría es LAZY; el EntityGraph la trae en la misma consulta (JOIN)
-    // para poder mostrar categoriaNombre sin consultas extra.
+    // Trae la categoría en la misma consulta para poder mostrar su nombre.
     @Override
     @EntityGraph(attributePaths = "categoria")
     List<Material> findAll();
@@ -18,6 +17,7 @@ public interface MaterialRepository extends JpaRepository<Material, Integer> {
     @EntityGraph(attributePaths = "categoria")
     Optional<Material> findById(Integer id);
 
-    // ¿Hay materiales en esta categoría? Sirve para impedir borrarla.
+    Optional<Material> findByCodigoIgnoreCase(String codigo);
+
     boolean existsByCategoriaIdCategoria(Integer idCategoria);
 }

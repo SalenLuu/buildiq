@@ -4,9 +4,9 @@ import com.buildiq.model.Categoria;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/** Spring Data genera el CRUD (findAll, findById, save, delete...) a partir de esta interfaz. */
+// JpaRepository ya trae findAll, findById, save y delete.
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
 
-    // Spring Data arma la consulta con solo leer el nombre del método: WHERE LOWER(nombre) = LOWER(?).
+    // Spring arma la consulta a partir del nombre del método.
     Optional<Categoria> findByNombreIgnoreCase(String nombre);
 }

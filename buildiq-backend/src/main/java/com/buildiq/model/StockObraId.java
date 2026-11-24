@@ -5,7 +5,7 @@ import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-/** Clave primaria compuesta de stock_obra: (id_obra, id_material). */
+// Llave primaria de stock_obra: obra + material.
 @Embeddable
 public class StockObraId implements Serializable {
 
@@ -28,7 +28,7 @@ public class StockObraId implements Serializable {
     public Integer getIdMaterial() { return idMaterial; }
     public void setIdMaterial(Integer idMaterial) { this.idMaterial = idMaterial; }
 
-    // Una clave compuesta necesita equals/hashCode para que JPA distinga filas.
+    // JPA necesita equals y hashCode para comparar llaves compuestas.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

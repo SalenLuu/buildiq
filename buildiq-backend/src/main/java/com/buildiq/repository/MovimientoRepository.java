@@ -11,11 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface MovimientoRepository extends JpaRepository<Movimiento, Integer> {
 
-    /**
-     * Historial con filtros opcionales (null = no filtrar). El rango de fechas es
-     * [desde, hastaExclusivo): así "hasta" incluye el día completo.
-     * Orden: más recientes primero.
-     */
+    // Si un filtro llega en null, no se filtra por ese campo. Primero los más recientes.
     @EntityGraph(attributePaths = {"obra", "material", "proveedor"})
     @Query("""
             select m from Movimiento m
@@ -32,4 +28,10 @@ public interface MovimientoRepository extends JpaRepository<Movimiento, Integer>
             @Param("tipo") TipoMovimiento tipo,
             @Param("desde") LocalDateTime desde,
             @Param("hastaExclusivo") LocalDateTime hastaExclusivo);
+
+    boolean existsByObraIdObra(Integer idObra);
+
+    boolean existsByMaterialIdMaterial(Integer idMaterial);
+
+    boolean existsByProveedorIdProveedor(Integer idProveedor);
 }
