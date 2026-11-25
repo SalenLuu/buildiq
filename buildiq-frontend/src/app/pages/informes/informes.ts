@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ObraService } from '../../core/services/entidades.service';
 import { Obra } from '../../models';
-import { Aviso } from '../../shared/ui/aviso';
 import { Boton } from '../../shared/ui/boton';
 import { CampoFormulario } from '../../shared/ui/campo-formulario';
 import { EncabezadoPagina } from '../../shared/ui/encabezado-pagina';
@@ -11,7 +10,7 @@ import { Tarjeta } from '../../shared/ui/tarjeta';
 // Filtros de los informes. El PDF todavía no está hecho.
 @Component({
   selector: 'app-informes',
-  imports: [ReactiveFormsModule, EncabezadoPagina, Tarjeta, CampoFormulario, Boton, Aviso],
+  imports: [ReactiveFormsModule, EncabezadoPagina, Tarjeta, CampoFormulario, Boton],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-encabezado-pagina titulo="Informes" subtitulo="Elige qué informe quieres y con qué filtros." />
@@ -48,12 +47,6 @@ import { Tarjeta } from '../../shared/ui/tarjeta';
         <span class="text-sm text-pizarra-500">La generación del PDF estará disponible próximamente.</span>
       </div>
     </app-tarjeta>
-
-    <div class="mt-4">
-      <app-aviso tipo="info">
-        Por ahora puedes elegir los filtros; el informe en PDF todavía no se genera.
-      </app-aviso>
-    </div>
   `,
 })
 export class InformesPage implements OnInit {
