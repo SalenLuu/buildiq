@@ -1,4 +1,4 @@
 export const environment = {
-  // Dirección del backend.
-  apiUrl: 'http://localhost:8080/api',
+  // Dirección del backend en producción (Railway).
+  apiUrl: 'https://buildiq-production-92a262d8.up.railway.app/api',
 };
