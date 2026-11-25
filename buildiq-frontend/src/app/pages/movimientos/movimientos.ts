@@ -262,7 +262,6 @@ export class MovimientosPage implements OnInit {
         next: () => {
           this.registrando.set(false);
           this.exito.set(v.tipo === 'ENTRADA' ? 'Entrada registrada correctamente.' : 'Salida registrada correctamente.');
-          // Se dejan obra, tipo y responsable para registrar otro seguido.
           this.form.patchValue({ idMaterial: null, idProveedor: null, cantidad: null, observacion: '' });
           this.form.markAsUntouched();
           this.cargarStock();

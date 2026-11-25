@@ -79,6 +79,5 @@ export class Layout {
     { ruta: '/obras', etiqueta: 'Obras', icono: '▣' },
     { ruta: '/movimientos', etiqueta: 'Movimientos', icono: '⇄' },
     { ruta: '/stock', etiqueta: 'Stock por obra', icono: '▤' },
-    { ruta: '/informes', etiqueta: 'Informes', icono: '⎙' },
   ];
 }
