@@ -13,7 +13,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
-// Tabla obras.
 @Entity
 @Table(name = "obras")
 public class Obra {

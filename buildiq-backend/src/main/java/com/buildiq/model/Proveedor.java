@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-// Tabla proveedores.
 @Entity
 @Table(name = "proveedores")
 public class Proveedor {

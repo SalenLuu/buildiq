@@ -20,7 +20,6 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-// Tabla movimientos: entradas, salidas y ajustes.
 // El proveedor solo se usa en las entradas, por eso puede ser null.
 @Entity
 @Table(name = "movimientos")

@@ -17,7 +17,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
-// Tabla materiales. En el JSON la categoría va como idCategoria y categoriaNombre.
+// En el JSON la categoría va como idCategoria y categoriaNombre.
 @Entity
 @Table(name = "materiales")
 public class Material {

@@ -42,16 +42,16 @@ import { Tarjeta } from '../../shared/ui/tarjeta';
       </form>
 
       <div class="mt-6 flex flex-wrap items-center gap-3">
-        <button appBoton type="button" disabled title="Disponible cuando el backend genere los PDF">
+        <button appBoton type="button" disabled title="Todavía no disponible">
           Generar PDF
         </button>
-        <span class="text-sm text-pizarra-500">Disponible el 20 de noviembre, cuando el backend genere los PDF.</span>
+        <span class="text-sm text-pizarra-500">La generación del PDF estará disponible próximamente.</span>
       </div>
     </app-tarjeta>
 
     <div class="mt-4">
       <app-aviso tipo="info">
-        Estos filtros se aplicarán cuando el backend genere el PDF; por ahora la pantalla solo deja definidos los criterios.
+        Por ahora puedes elegir los filtros; el informe en PDF todavía no se genera.
       </app-aviso>
     </div>
   `,
